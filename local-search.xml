@@ -1,88 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>学习/分享/记录</title>
+<search>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
-  
-  <link href="http://example.com/"/>
-  <updated>2020-12-13T13:02:58.031Z</updated>
-  <id>http://example.com/</id>
-  
-  <author>
-    <name>张xiao博</name>
-    
-  </author>
-  
-  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Java集合</title>
-    <link href="http://example.com/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/"/>
-    <id>http://example.com/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/</id>
-    <published>2020-12-13T12:41:02.000Z</published>
-    <updated>2020-12-13T13:02:58.031Z</updated>
+    <link href="/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/"/>
+    <url>/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/</url>
     
     <content type="html"><![CDATA[<h2 id="源码类图"><a href="#源码类图" class="headerlink" title="源码类图"></a>源码类图</h2><p><img src="/images/java/Java_Util_Collections.png"></p><h2 id="源码学习"><a href="#源码学习" class="headerlink" title="源码学习"></a>源码学习</h2><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4>]]></content>
     
     
+    <categories>
       
+      <category>Java源码</category>
       
-    <summary type="html">&lt;h2 id=&quot;源码类图&quot;&gt;&lt;a href=&quot;#源码类图&quot; class=&quot;headerlink&quot; title=&quot;源码类图&quot;&gt;&lt;/a&gt;源码类图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/java/Java_Util_Collections.png&quot;&gt;&lt;/p&gt;
-&lt;h2 id=</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="Java源码" scheme="http://example.com/categories/Java%E6%BA%90%E7%A0%81/"/>
-    
-    
-    <category term="Java源码" scheme="http://example.com/tags/Java%E6%BA%90%E7%A0%81/"/>
+      <tag>Java源码</tag>
+      
+    </tags>
     
   </entry>
   
+  
+  
   <entry>
     <title>Hexo+Github+fluid搭建</title>
-    <link href="http://example.com/2020/12/12/my-site/"/>
-    <id>http://example.com/2020/12/12/my-site/</id>
-    <published>2020-12-12T11:10:53.000Z</published>
-    <updated>2020-12-13T12:24:07.236Z</updated>
+    <link href="/2020/12/12/my-site/"/>
+    <url>/2020/12/12/my-site/</url>
     
     <content type="html"><![CDATA[<h2 id="Hexo-Github-fluid搭建记录"><a href="#Hexo-Github-fluid搭建记录" class="headerlink" title="Hexo+Github+fluid搭建记录"></a>Hexo+Github+fluid搭建记录</h2><h4 id="主体流程"><a href="#主体流程" class="headerlink" title="主体流程"></a>主体流程</h4><p>1.Github 注册账号,创建”*.github.io”的仓库<br>2.安装Node.js后,使用npm install hexo<br>3.修改默认theme为fluid</p><h3 id="需要参考的链接"><a href="#需要参考的链接" class="headerlink" title="需要参考的链接"></a>需要参考的链接</h3><p><a href="https://github.com/">Github</a><br><a href="https://nodejs.org/">Node.js</a><br><a href="https://hexo.io/zh-cn/">Hexo</a><br><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></p><h2 id="创建博客的原因"><a href="#创建博客的原因" class="headerlink" title="创建博客的原因"></a>创建博客的原因</h2><ol><li><p>我是一名Android开发者，曾在17-19年(数拓科技)时已经开始写博客了。我主要工作中负责开发和维护系统应用（com.instwall.hardware)。涉及模块如下</p><p> 1.1 Android USB 串口通信<br> 1.2 Android 蓝牙通信<br> 1.3 Android Service开发维护<br> 1.4 Java Byte 读取/处理/解析<br> 1.5 Android 跨进程通信<br>以上这些模块曾经已经整理详细学习记录（软件&amp;硬件知识)，希望在后续维护中，补充上来！！！</p></li><li><p>其他知识模块如下</p><p> 2.1 Android Camera(相机应用)<br> 2.2 Android OpenGLES(图像处理)<br> 2.3 Android AI(TFLite)</p></li><li><p>学习方向<br> 3.1 美颜算法了解和学习<br> 3.2 算法题</p></li></ol>]]></content>
     
     
+    <categories>
       
+      <category>其他</category>
       
-    <summary type="html">&lt;h2 id=&quot;Hexo-Github-fluid搭建记录&quot;&gt;&lt;a href=&quot;#Hexo-Github-fluid搭建记录&quot; class=&quot;headerlink&quot; title=&quot;Hexo+Github+fluid搭建记录&quot;&gt;&lt;/a&gt;Hexo+Github+fluid搭建记录&lt;/</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="其他" scheme="http://example.com/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="工具使用记录" scheme="http://example.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+      <tag>工具使用记录</tag>
+      
+    </tags>
     
   </entry>
   
+  
+  
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2020/12/12/hello-world/"/>
-    <id>http://example.com/2020/12/12/hello-world/</id>
-    <published>2020-12-12T11:04:53.223Z</published>
-    <updated>2020-12-12T11:04:53.223Z</updated>
+    <link href="/2020/12/12/hello-world/"/>
+    <url>/2020/12/12/hello-world/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
-</feed>
+  
+  
+  
+</search>
