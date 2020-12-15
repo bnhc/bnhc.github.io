@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-12-15T15:12:36.660Z</updated>
+  <updated>2020-12-15T15:15:00.659Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>java_String</title>
-    <link href="http://example.com/2020/12/15/java/lang/java-String/index/"/>
-    <id>http://example.com/2020/12/15/java/lang/java-String/index/</id>
+    <link href="http://example.com/2020/12/15/java/lang/String/"/>
+    <id>http://example.com/2020/12/15/java/lang/String/</id>
     <published>2020-12-15T15:11:08.000Z</published>
-    <updated>2020-12-15T15:12:36.660Z</updated>
+    <updated>2020-12-15T15:15:00.659Z</updated>
     
     <content type="html"><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><h2 id="Char"><a href="#Char" class="headerlink" title="Char"></a>Char</h2><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2>]]></content>
     
@@ -33,6 +33,10 @@
     
     
     
+    <category term="Java源码" scheme="http://example.com/categories/Java%E6%BA%90%E7%A0%81/"/>
+    
+    
+    <category term="Java源码" scheme="http://example.com/tags/Java%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
