@@ -252,7 +252,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      848 字
+      1.3k 字
     </span>
   
 
@@ -262,7 +262,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      18
        分钟
     </span>
   
@@ -297,6 +297,8 @@
             <div class="markdown-body">
               <h2 id="源码类图"><a href="#源码类图" class="headerlink" title="源码类图"></a>源码类图</h2><p><img src="/images/java/Java_Util_Collections.png" srcset="/img/loading.gif" alt="Java1.8"></p>
 <h2 id="源码学习"><a href="#源码学习" class="headerlink" title="源码学习"></a>源码学习</h2><h3 id="1-List"><a href="#1-List" class="headerlink" title="1.List"></a>1.List</h3><h4 id="1-1-Vector"><a href="#1-1-Vector" class="headerlink" title="1.1 Vector"></a>1.1 Vector</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/wupeixuan/JDKSourceCode1.8/blob/master/src/java/util/Vector.java">在线查看</a></p>
+</li>
 <li><p>Vector实现是数组，默认空构造方法长度为10，也可以根据传入initialCapacity</p>
   <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">Vector</span>(<span class="hljs-params">int initialCapacity, int capacityIncrement</span>)</span> &#123;<br>    <span class="hljs-built_in">super</span>();<br>    <span class="hljs-keyword">if</span> (initialCapacity &lt; <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Illegal Capacity: &quot;</span>+initialCapacity);<br>    <span class="hljs-built_in">this</span>.elementData = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>[initialCapacity];<br>    <span class="hljs-built_in">this</span>.capacityIncrement = capacityIncrement;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">Vector</span>(<span class="hljs-params">int initialCapacity</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>(initialCapacity, <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">Vector</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>(<span class="hljs-number">10</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>Vector使用时</p>
@@ -318,6 +320,10 @@
 </li>
 </ul>
 <h4 id="1-2-ArrayList"><a href="#1-2-ArrayList" class="headerlink" title="1.2 ArrayList"></a>1.2 ArrayList</h4><ul>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/wupeixuan/JDKSourceCode1.8/blob/master/src/java/util/ArrayList.java">在线查看</a></li>
+</ul>
+</li>
 <li><p>ArrayList实现是一个数组，默认长度10，size（int）表示长度。代码摘选如下：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DEFAULT_CAPACTITY=<span class="hljs-number">10</span>;<span class="hljs-comment">//默认长度</span><br><span class="hljs-keyword">transient</span> Object[] elementData;<span class="hljs-comment">//基本实现数组</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> size;<span class="hljs-comment">//大小</span><br></code></pre></td></tr></table></figure></li>
 <li><p>ArrayList 使用时</p>
@@ -345,11 +351,44 @@
 </li>
 </ul>
 <h4 id="1-2-LinkedList"><a href="#1-2-LinkedList" class="headerlink" title="1.2 LinkedList"></a>1.2 LinkedList<E></h4><ul>
-<li>LinkedList底层数据结构是一个双向链表  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>    <br></code></pre></td></tr></table></figure>
-
+<li><p><a target="_blank" rel="noopener" href="https://github.com/wupeixuan/JDKSourceCode1.8/blob/master/src/java/util/LinkedList.java">在线查看</a></p>
+</li>
+<li><p>LinkedList底层数据结构是一个双向链表，既然是双向链表。可以被当作栈，队列。非线程安全</p>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">transient int <span class="hljs-attr">size=</span><span class="hljs-number">0</span>;<br>transient <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;E</span>&gt; first;//transient 防止序列化<br>transient <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;E</span>&gt; last;<br></code></pre></td></tr></table></figure></li>
+<li><p>LinkedList 方法实现(这里只对思路和public方法记录下)</p>
+<ul>
+<li>头节点插入  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-keyword">private</span> void linkFirst(E e)&#123;<br>    final Node&lt;E&gt; f = first;<br>    final Node&lt;E&gt; <span class="hljs-keyword">new</span><span class="hljs-type">Node</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">Node</span>&lt;&gt;(<span class="hljs-literal">null</span>,e,f);<br>    first = <span class="hljs-keyword">new</span><span class="hljs-type">Node</span>;<br>    <span class="hljs-keyword">if</span>(f == <span class="hljs-literal">null</span>)<br>        last = <span class="hljs-keyword">new</span><span class="hljs-type">Node</span>;<br>    <span class="hljs-keyword">else</span><br>        f.prev = <span class="hljs-keyword">new</span><span class="hljs-type">Node</span>;<br>    size++;<br>    modCount++;    <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>尾节点插入(不做笔记)</li>
+<li>在succ节点前插入  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">void linkBefore(E e,<span class="hljs-keyword">Node</span><span class="hljs-title">&lt;E</span>&gt; succ)&#123;<br>    final <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;E</span>&gt; pred = succ.prev;//保存前一个节点<br>    final <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;E</span>&gt; newNode = new <span class="hljs-keyword">Node</span><span class="hljs-title">&lt;&gt;(pred</span>,e,succ);//创建一个新的节点<br>    succ.prev = newNode;//succ的前节点设置为newNode<br>    if(<span class="hljs-attr">pred=</span>=null)<br>        first = newNode;<br>    else<br>        pred.next = newNode;<br>    size++;<br>    modCount++;        <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>删除非空节点</li>
+<li>获取首节点,并且返回头节点值  <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> E <span class="hljs-function"><span class="hljs-title">getFirst</span>(<span class="hljs-params"></span>)</span>&#123;<br>    final Node&lt;E&gt; f = first;<br>    <span class="hljs-keyword">if</span>(f==<span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoSuchElementException();<br>    <span class="hljs-keyword">return</span> f.item    <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>获取尾节点，返回存储的元素值</li>
+<li>在头节点插入</li>
+<li>判断元素是否包含  <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript">        <span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> <span class="hljs-function"><span class="hljs-title">contains</span>(<span class="hljs-params"><span class="hljs-built_in">Object</span> o</span>)</span>&#123;<br>            <span class="hljs-keyword">return</span> indexOf(o)!=-<span class="hljs-number">1</span>;<br>        &#125;<br>    <span class="hljs-string">``</span><span class="hljs-string">` </span><br><span class="hljs-string">- 查询操作返回对应的Index</span><br></code></pre></td></tr></table></figure>
+<pre><code>  public int indexOf(Object o)&#123;
+      int index = 0;
+      if(o==null)&#123;
+          for(Node&lt;E&gt; x= first;x!=null;x=x.next)&#123;
+              if(x.itme==null)
+                  return index;
+              index++;    
+          &#125;
+      &#125;else&#123;
+          for(Node&lt;E&gt; x= first;x!=null;x=x.next)&#123;
+              if(o.equals(x.item))
+                  return index;
+              index++;    
+          &#125;        
+      &#125;
+  &#125;</code></pre>
+  ```</li>
+<li>获取头节点 peeK()</li>
+<li>获取并删除头节点 poll()</li>
+<li>等等（这些方法的实现还是比较简单，都是比较常规的操作)<h3 id="2-Map"><a href="#2-Map" class="headerlink" title="2.Map"></a>2.Map</h3><h4 id="2-1-HashMap"><a href="#2-1-HashMap" class="headerlink" title="2.1 HashMap"></a>2.1 HashMap</h4></li>
+</ul>
 </li>
 </ul>
-<h3 id="2-Map"><a href="#2-Map" class="headerlink" title="2.Map"></a>2.Map</h3><h3 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h3>
+<h5 id="2-1-1-LinkedHashMap"><a href="#2-1-1-LinkedHashMap" class="headerlink" title="2.1.1 LinkedHashMap"></a>2.1.1 LinkedHashMap</h5><h4 id="2-2-TreeMap"><a href="#2-2-TreeMap" class="headerlink" title="2.2 TreeMap"></a>2.2 TreeMap</h4><h4 id="2-3-HashTable"><a href="#2-3-HashTable" class="headerlink" title="2.3 HashTable"></a>2.3 HashTable</h4><h3 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h3><h4 id="3-1-HashSet"><a href="#3-1-HashSet" class="headerlink" title="3.1 HashSet"></a>3.1 HashSet</h4><h4 id="3-1-1-LinkedHashSet"><a href="#3-1-1-LinkedHashSet" class="headerlink" title="3.1.1 LinkedHashSet"></a>3.1.1 LinkedHashSet</h4><h4 id="3-2-TreeSet"><a href="#3-2-TreeSet" class="headerlink" title="3.2 TreeSet"></a>3.2 TreeSet</h4><h4 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h4>
             </div>
             <hr>
             <div>
