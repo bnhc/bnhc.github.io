@@ -17,7 +17,7 @@
   <meta name="description" content="个人小站点">
   <meta name="author" content="张xiao博">
   <meta name="keywords" content="Android">
-  <title>学习/分享/记录</title>
+  <title>FaceDetector - 学习/分享/记录</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -33,8 +33,6 @@
     
   
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -64,7 +62,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -230,46 +228,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="FaceDetector">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-31 11:36" pubdate>
-        2021年12月31日 中午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      284 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      3
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -282,99 +243,24 @@
 
   <main>
     
-      
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none"></h1>
-            
-            <div class="markdown-body">
-              <p>precision mediump float;</p>
-<p>varying vec2 aCoord;</p>
-<p>uniform sampler2D vTexture;</p>
-<p>uniform vec2 left_eye;//左眼<br>uniform vec2 right_eye;//右眼</p>
-<p>float fs(float r, float rmax){<br>    float a = 0.6;<br>    return (1.0 - pow((r / rmax - 1.0), 2.0) * a);<br>}<br>//coord:输入采样点 eye:眼睛坐标点  rmax:最大作用半径<br>//这个方法的目的是重新返回一个采样点的坐标，来实现放大效果<br>vec2 newCoord(vec2 coord, vec2 eye, float rmax){<br>    vec2 new_coord = coord;</p>
-<pre><code>//1 算出当前采样点的坐标与眼睛的距离
-float r = distance(coord, eye);
-
-//如果在作用半径范围内
-if(r &lt; rmax)&#123;
-    //2 套用放大公式 即根据 当前采样点与眼睛的距离  和  作用半径 算出一个系数
-    float fsr = fs(r, rmax);
-
-    //3 用这个系数来求得新坐标点的位置 new_coord - eye = fsr*(coord - eye)
-    new_coord = fsr * (coord - eye) + eye;
-&#125;
-
-return new_coord;</code></pre>
-<p>}</p>
-<p>void main() {<br>    //1 计算放大半径<br>    float rmax = distance(left_eye, right_eye) / 2.0;</p>
-<pre><code>//2.1  计算左眼放大处理后的采样点坐标
-vec2 new_coord = newCoord(aCoord, left_eye, rmax);
-
-//2.2  计算右眼放大处理后的采样点坐标
-new_coord = newCoord(new_coord, right_eye, rmax);
-
-//3 将重新求得的采样点坐标传给片元着色器
-gl_FragColor = texture2D(vTexture, new_coord);</code></pre>
-<p>}</p>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
-                
+
+<div class="page-content">
+  
+</div>
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/12/27/Android/OpenGLES/OpenGLES_FBO/">
-                        <span class="hidden-mobile">OpenGLES FBO 学习</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -457,11 +343,7 @@ gl_FragColor = texture2D(vTexture, new_coord);</code></pre>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 

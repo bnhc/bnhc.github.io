@@ -4,44 +4,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2021/12/31/Android/OpenGLES/Tmp/"/>
-    <url>/2021/12/31/Android/OpenGLES/Tmp/</url>
-    
-    <content type="html"><![CDATA[<p>precision mediump float;</p><p>varying vec2 aCoord;</p><p>uniform sampler2D vTexture;</p><p>uniform vec2 left_eye;//左眼<br>uniform vec2 right_eye;//右眼</p><p>float fs(float r, float rmax){<br>    float a = 0.6;<br>    return (1.0 - pow((r / rmax - 1.0), 2.0) * a);<br>}<br>//coord:输入采样点 eye:眼睛坐标点  rmax:最大作用半径<br>//这个方法的目的是重新返回一个采样点的坐标，来实现放大效果<br>vec2 newCoord(vec2 coord, vec2 eye, float rmax){<br>    vec2 new_coord = coord;</p><pre><code>//1 算出当前采样点的坐标与眼睛的距离float r = distance(coord, eye);//如果在作用半径范围内if(r &lt; rmax)&#123;    //2 套用放大公式 即根据 当前采样点与眼睛的距离  和  作用半径 算出一个系数    float fsr = fs(r, rmax);    //3 用这个系数来求得新坐标点的位置 new_coord - eye = fsr*(coord - eye)    new_coord = fsr * (coord - eye) + eye;&#125;return new_coord;</code></pre><p>}</p><p>void main() {<br>    //1 计算放大半径<br>    float rmax = distance(left_eye, right_eye) / 2.0;</p><pre><code>//2.1  计算左眼放大处理后的采样点坐标vec2 new_coord = newCoord(aCoord, left_eye, rmax);//2.2  计算右眼放大处理后的采样点坐标new_coord = newCoord(new_coord, right_eye, rmax);//3 将重新求得的采样点坐标传给片元着色器gl_FragColor = texture2D(vTexture, new_coord);</code></pre><p>}</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>OpenGLES FBO 学习</title>
-    <link href="/2021/12/27/Android/OpenGLES/OpenGLES_FBO/"/>
-    <url>/2021/12/27/Android/OpenGLES/OpenGLES_FBO/</url>
-    
-    <content type="html"><![CDATA[<h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><pre><code> 1. Android系统默认渲染器 OpenGL,系统启动时，经过BootLoader启动，kernel启动----&gt;init进程启动核心进程（ServiceManager,zygote,OpenGL)----&gt;播放开机动画        OpenGL渲染管线的最后一个阶段就是帧缓冲区（FrameBuffer) 2. OpenGL渲染管线的最后阶段FrameBuffer,Android系统存在默认缓冲区（window-system-provided frame),用于屏幕显示。GPU往显示缓冲区写入数据时，屏幕会显示缓冲内容。        使用FBO可以让数据不渲染到屏幕上，渲染到离屏的Buffer中        Android中后台给视频添加水印，Camera实时滤镜，需要把原数据经过处理后保存但是不显示数据 3.对于默认的相机，使用系统提供的OpenGL渲染的帧缓冲区（OES），OpenGL所有渲染结果直接到达帧缓冲区----&gt;on-Srceen渲染方式       对于贴纸相机，使用帧缓冲区对象，OpenGL将提供给窗口的帧缓冲区重定向FBO之中 4. FBO提供缓冲区：颜色缓冲区，深度缓冲区，模板缓冲区        FBO提供2种绑定的对象：纹理图片(texture images) 和 渲染图像(renderbuffer images)         4.1 纹理绑定FBO,OpenGL执行渲染到纹理操作        4.2 渲染绑定FBO，OpenGL执行离屏渲染        4.3 通过GL_MAX_COLOR_ATTACHMENTS查询颜色缓冲区挂节点        4.4 纹理对象 glFramebufferTexture2D            渲染对象 glFramebufferRenderbuffer 5. FBO (Frame Buffer Object) 帧缓冲区对象，FBO本身不能用于渲染，只有添加了纹理或者渲染缓冲区后才能作为渲染目标             6. FBO 使用流程图</code></pre><p><img src="/images/android/opengles/Android_OpenGLES_OES.png" alt="FBO"></p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>#### 1.使用FBO处理图片滤镜### 2.使用FBO处理相机纹理                 </code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>OpenGLES</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>OpenGLES</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>java_String</title>
     <link href="/2020/12/15/java/lang/String/"/>
     <url>/2020/12/15/java/lang/String/</url>
@@ -59,31 +21,6 @@
     <tags>
       
       <tag>Java源码</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Camera2+GLSurfaceView使用</title>
-    <link href="/2020/12/13/Android/Camera2/Camera2_GlSurfaceView/"/>
-    <url>/2020/12/13/Android/Camera2/Camera2_GlSurfaceView/</url>
-    
-    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念:"></a>基本概念:</h3><p><img src="/images/java/OpenGLES_Camera_Screen_Orientation.png" alt="Deivce_Orientation"></p><p><img src="/images/java/Orientation_0.png" alt="Orientation"></p><h3 id="打开相机"><a href="#打开相机" class="headerlink" title="打开相机"></a>打开相机</h3><h3 id="显示相机"><a href="#显示相机" class="headerlink" title="显示相机"></a>显示相机</h3><h3 id="使用ImageReader"><a href="#使用ImageReader" class="headerlink" title="使用ImageReader"></a>使用ImageReader</h3><h3 id="Image转码"><a href="#Image转码" class="headerlink" title="Image转码"></a>Image转码</h3>]]></content>
-    
-    
-    <categories>
-      
-      <category>Android</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>相机</tag>
       
     </tags>
     
