@@ -17,23 +17,9 @@
   <meta name="description" content="个人小站点">
   <meta name="author" content="张xiao博">
   <meta name="keywords" content="Android">
-  <title>OpenGLES_FBO - 学习/分享/记录</title>
+  <title>归档 - 学习/分享/记录</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
-    
-  
-
-  
 
 
 
@@ -228,7 +214,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="OpenGLES_FBO">
+            <span class="h2" id="subtitle" title="归档">
               
             </span>
 
@@ -252,35 +238,37 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="page-content">
-  <h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><pre><code> 1. Android系统默认渲染器 OpenGL,系统启动时，经过BootLoader启动，kernel启动----&gt;init进程启动核心进程（ServiceManager,zygote,OpenGL)----&gt;播放开机动画
-        OpenGL渲染管线的最后一个阶段就是帧缓冲区（FrameBuffer)
-
- 2. OpenGL渲染管线的最后阶段FrameBuffer,Android系统存在默认缓冲区（window-system-provided frame),用于屏幕显示。GPU往显示缓冲区写入数据时，屏幕会显示缓冲内容。
-        使用FBO可以让数据不渲染到屏幕上，渲染到离屏的Buffer中
-        Android中后台给视频添加水印，Camera实时滤镜，需要把原数据经过处理后保存但是不显示数据
-
- 3.对于默认的相机，使用系统提供的OpenGL渲染的帧缓冲区（OES），OpenGL所有渲染结果直接到达帧缓冲区----&gt;on-Srceen渲染方式
-       对于贴纸相机，使用帧缓冲区对象，OpenGL将提供给窗口的帧缓冲区重定向FBO之中
-
- 4. FBO提供缓冲区：颜色缓冲区，深度缓冲区，模板缓冲区
-        FBO提供2种绑定的对象：纹理图片(texture images) 和 渲染图像(renderbuffer images) 
-        4.1 纹理绑定FBO,OpenGL执行渲染到纹理操作
-        4.2 渲染绑定FBO，OpenGL执行离屏渲染
-        4.3 通过GL_MAX_COLOR_ATTACHMENTS查询颜色缓冲区挂节点
-        4.4 纹理对象 glFramebufferTexture2D
-            渲染对象 glFramebufferRenderbuffer
- 5. FBO (Frame Buffer Object) 帧缓冲区对象，FBO本身不能用于渲染，只有添加了纹理或者渲染缓冲区后才能作为渲染目标            
-
- 6. FBO 使用流程图</code></pre>
-<p><img src="/images/android/opengles/Android_OpenGLES_OES.png" srcset="/img/loading.gif" alt="FBO"></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>#### 1.使用FBO处理图片滤镜
-
-
-
-### 2.使用FBO处理相机纹理    </code></pre>
-
+<div class="list-group">
+  <p class="h4">共计 7 篇文章</p>
+  <hr>
+  
+  
+    
+      
+      <p class="h5">2022</p>
+    
+    <a href="/2022/01/07/OpenCV/FaceDetector/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">FaceDetector</span>
+      <time style="float: right;">01-07</time>
+    </a>
+  
+    
+    <a href="/2022/01/07/Android/OpelGLES/OpenGLES_FBO/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">OpenGLES_FBO</span>
+      <time style="float: right;">01-07</time>
+    </a>
+  
+    
+    <a href="/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Camera_GlSurfaceView</span>
+      <time style="float: right;">01-07</time>
+    </a>
+  
 </div>
+
+
+
+
 
               </div>
             </div>
@@ -372,8 +360,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 

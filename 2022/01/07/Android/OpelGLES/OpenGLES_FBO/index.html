@@ -17,9 +17,25 @@
   <meta name="description" content="个人小站点">
   <meta name="author" content="张xiao博">
   <meta name="keywords" content="Android">
-  <title>归档 - 学习/分享/记录</title>
+  <title>OpenGLES_FBO - 学习/分享/记录</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -214,9 +230,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="OpenGLES_FBO">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-07 09:48" pubdate>
+        2022年1月7日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      428 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -229,79 +282,116 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 7 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/01/07/OpenCV/FaceDetector/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">FaceDetector</span>
-      <time style="float: right;">01-07</time>
-    </a>
-  
-    
-    <a href="/2022/01/07/Android/OpelGLES/OpenGLES_FBO/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">OpenGLES_FBO</span>
-      <time style="float: right;">01-07</time>
-    </a>
-  
-    
-    <a href="/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Camera_GlSurfaceView</span>
-      <time style="float: right;">01-07</time>
-    </a>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/12/15/java/lang/String/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">java_String</span>
-      <time style="float: right;">12-15</time>
-    </a>
-  
-    
-    <a href="/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Java集合</span>
-      <time style="float: right;">12-13</time>
-    </a>
-  
-    
-    <a href="/2020/12/12/my-site/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo+Github+fluid搭建</span>
-      <time style="float: right;">12-12</time>
-    </a>
-  
-    
-    <a href="/2020/12/12/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <time style="float: right;">12-12</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OpenGLES_FBO</h1>
+            
+            <div class="markdown-body">
+              <h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><pre><code> 1. Android系统默认渲染器 OpenGL,系统启动时，经过BootLoader启动，kernel启动----&gt;init进程启动核心进程（ServiceManager,zygote,OpenGL)----&gt;播放开机动画
+        OpenGL渲染管线的最后一个阶段就是帧缓冲区（FrameBuffer)
+
+ 2. OpenGL渲染管线的最后阶段FrameBuffer,Android系统存在默认缓冲区（window-system-provided frame),用于屏幕显示。GPU往显示缓冲区写入数据时，屏幕会显示缓冲内容。
+        使用FBO可以让数据不渲染到屏幕上，渲染到离屏的Buffer中
+        Android中后台给视频添加水印，Camera实时滤镜，需要把原数据经过处理后保存但是不显示数据
+
+ 3.对于默认的相机，使用系统提供的OpenGL渲染的帧缓冲区（OES），OpenGL所有渲染结果直接到达帧缓冲区----&gt;on-Srceen渲染方式
+       对于贴纸相机，使用帧缓冲区对象，OpenGL将提供给窗口的帧缓冲区重定向FBO之中
+
+ 4. FBO提供缓冲区：颜色缓冲区，深度缓冲区，模板缓冲区
+        FBO提供2种绑定的对象：纹理图片(texture images) 和 渲染图像(renderbuffer images) 
+        4.1 纹理绑定FBO,OpenGL执行渲染到纹理操作
+        4.2 渲染绑定FBO，OpenGL执行离屏渲染
+        4.3 通过GL_MAX_COLOR_ATTACHMENTS查询颜色缓冲区挂节点
+        4.4 纹理对象 glFramebufferTexture2D
+            渲染对象 glFramebufferRenderbuffer
+ 5. FBO (Frame Buffer Object) 帧缓冲区对象，FBO本身不能用于渲染，只有添加了纹理或者渲染缓冲区后才能作为渲染目标            
+
+ 6. FBO 使用流程图</code></pre>
+<p><img src="/images/android/opengles/Android_OpenGLES_OES.png" srcset="/img/loading.gif" alt="FBO"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>#### 1.使用FBO处理图片滤镜
 
 
 
+### 2.使用FBO处理相机纹理    </code></pre>
 
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/OpenGLES/">OpenGLES</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGLES/">OpenGLES</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/07/OpenCV/FaceDetector/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">FaceDetector</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/">
+                        <span class="hidden-mobile">Camera_GlSurfaceView</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -384,9 +474,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
