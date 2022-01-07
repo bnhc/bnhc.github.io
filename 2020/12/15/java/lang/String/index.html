@@ -296,7 +296,8 @@
             
             <div class="markdown-body">
               <h2 id="Char"><a href="#Char" class="headerlink" title="Char"></a>Char</h2><pre><code>1. String 底层实现为 char[]-----&gt;private final char value[]//char[] 数组
-2. String类为final类，也就是无法通过子类去继承。（final修饰的方法无法复写)</code></pre>
+2. String类为final类，也就是无法通过子类去继承。（final修饰的方法无法复写)
+</code></pre>
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><pre><code>### 1. String 实现了接口列表
     #### 1.1 java.io.Serialliable 序列化
     #### 1.2 Comparable&lt;String&gt;----&gt;public int compareTo(String)  此接口用来设置排序的规则
@@ -305,13 +306,17 @@
     #### 2.1  private final char value[];//使用字符数组进行存储
     #### 2.2  private int hash;//缓存字符串的哈希值
 ### 3. String 方法
-    #### 3.1 String的构造方法中，涉及charset，使用到了StringCode类以及使用Arrays.copyof() 通过对char数组进行拷贝</code></pre>
+    #### 3.1 String的构造方法中，涉及charset，使用到了StringCode类以及使用Arrays.copyof() 通过对char数组进行拷贝
+    
+</code></pre>
 <h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><pre><code>### 1. StringBuilder  A mutable sequence of characters.（可变序列序列），but with no guarantee of synchronization(但是无法保证同步)，used by a single thread,it will be faster under most implementation.
 ### 2. StringBuilder 同样为final类，无法通过子类继承去修改实现,继承AbstractStringBuilder,
        实现的接口列表
                 2.1 java.io.Serializable 序列化
-                2.2 CharSequence </code></pre>
-<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><pre><code>### 2. StringBuffer</code></pre>
+                2.2 CharSequence 
+</code></pre>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><pre><code>### 2. StringBuffer
+</code></pre>
 <h2 id="延申知识"><a href="#延申知识" class="headerlink" title="延申知识"></a>延申知识</h2><pre><code>### 1. java.lang.Comparable的使用
 
     o:specified object
@@ -352,7 +357,8 @@
 ### 3.CharSequence
     3.1简介
     &lt;tt&gt;CharSequence&lt;/tt&gt; is a readable sequence of &lt;code&gt;char&lt;/code&gt; values. This interface provides uniform, read-only access to many different kinds of &lt;code&gt;char&lt;/code&gt; sequences. 
-    此接口提供对于char的可读序列，可以用来提供统一，仅读 对于各种各样的char序列(String,StringBuilder,StringBuffer)</code></pre>
+    此接口提供对于char的可读序列，可以用来提供统一，仅读 对于各种各样的char序列(String,StringBuilder,StringBuffer)
+</code></pre>
 
             </div>
             <hr>

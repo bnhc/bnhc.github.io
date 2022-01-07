@@ -380,7 +380,8 @@
               index++;    
           &#125;        
       &#125;
-  &#125;</code></pre>
+  &#125;
+</code></pre>
   <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">    - 获取头节点 peeK()<br>    - 获取并删除头节点 poll()<br>    - 等等（这些方法的实现还是比较简单，都是比较常规的操作)<br><span class="hljs-comment">### 2.Map</span><br><span class="hljs-comment">#### 2.1 HashMap</span><br>- [在线查看](https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/wupeixuan/</span>JDKSourceCode1.<span class="hljs-number">8</span><span class="hljs-regexp">/blob/m</span>aster<span class="hljs-regexp">/src/</span>java<span class="hljs-regexp">/util/</span>HashMap.java)<br>- HashMap底层数据结构<br><br>    数组+链表+红黑树，当链表的长度大于等于<span class="hljs-number">8</span>时，链表会转换成为红黑树，当红黑树的大小小于等于<span class="hljs-number">6</span>时，红黑树会转换成为链表。<br></code></pre></td></tr></table></figure>
   static final int DEFAULT_ININIAL_CAPCITY=1&lt;&lt;4;//默认16<br>  static final int MAXIMUM_CAPACITY =1&lt;&lt;30;//最大<br>  transient Node&lt;K,V&gt;[] table;//存储数组的元素<br>  static final class TreeNode&lt;K,V&gt; extends LinkedHashMap.Entry&lt;K,V&gt;{}//红黑树的实现<br>  static class Node&lt;K, V&gt; implements Map.Entry&lt;K, V&gt;{}//链表的节点<br>```</li>
 </ul>
