@@ -17,7 +17,7 @@
     
     
     <entry>
-      <title>编译SeetaFace库</title>
+      <title>编译SeetaFace人脸5个关键点库</title>
       <link href="2022/01/08/Face/SeetaFace/"/>
       <url>2022/01/08/Face/SeetaFace/</url>
       
@@ -42,7 +42,7 @@
     
     
     <entry>
-      <title>FaceDetector</title>
+      <title>OpenCV FaceDetector 人脸检测</title>
       <link href="2022/01/07/OpenCV/FaceDetector/"/>
       <url>2022/01/07/OpenCV/FaceDetector/</url>
       
@@ -67,7 +67,7 @@
     
     
     <entry>
-      <title>OpenGLES_FBO</title>
+      <title>OpenGLES_FBO使用</title>
       <link href="2022/01/07/Android/OpelGLES/OpenGLES_FBO/"/>
       <url>2022/01/07/Android/OpelGLES/OpenGLES_FBO/</url>
       
@@ -92,7 +92,7 @@
     
     
     <entry>
-      <title>Camera_GlSurfaceView</title>
+      <title>Camera2+GlSurfaceView</title>
       <link href="2022/01/07/Android/Camera2/Camera2_GlSurfaceView/"/>
       <url>2022/01/07/Android/Camera2/Camera2_GlSurfaceView/</url>
       
@@ -101,14 +101,14 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Android Camera2 OpenGLES ImageReader </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 相机 </tag>
+            <tag> Camera2 </tag>
             
         </tags>
       
@@ -117,7 +117,7 @@
     
     
     <entry>
-      <title>java_String</title>
+      <title>java_String源码学习</title>
       <link href="2020/12/15/java/lang/String/"/>
       <url>2020/12/15/java/lang/String/</url>
       
@@ -142,7 +142,7 @@
     
     
     <entry>
-      <title>Java集合</title>
+      <title>Java集合结构学习</title>
       <link href="2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/"/>
       <url>2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/</url>
       
