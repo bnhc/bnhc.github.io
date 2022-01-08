@@ -252,7 +252,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      819 字
     </span>
   
 
@@ -262,7 +262,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      11
        分钟
     </span>
   
@@ -295,12 +295,48 @@
             <h1 style="display: none">FaceDetector</h1>
             
             <div class="markdown-body">
-              
+              <h3 id="1-OpenCV-For-Android"><a href="#1-OpenCV-For-Android" class="headerlink" title="1. OpenCV For Android"></a>1. OpenCV For Android</h3><pre><code>OpenCV 官网地址 https://opencv.org/releases/ ,提供了Android 平台使用的SDK
+SDK For Android 均包含在官方提供的opencv moudle中。
+</code></pre>
+<h3 id="2-官方例子face-detection-仅分析Native实现"><a href="#2-官方例子face-detection-仅分析Native实现" class="headerlink" title="2. 官方例子face-detection(仅分析Native实现)"></a>2. 官方例子face-detection(仅分析Native实现)</h3><h4 id="2-1-face-detection-默认使用了opencv-Camera1-org-opencv-android-JavaCameraView-，用来获取和显示数据，可以在face-detect-surface-view-xml中对View组件进行替换为如下"><a href="#2-1-face-detection-默认使用了opencv-Camera1-org-opencv-android-JavaCameraView-，用来获取和显示数据，可以在face-detect-surface-view-xml中对View组件进行替换为如下" class="headerlink" title="2.1 face-detection 默认使用了opencv Camera1 (org.opencv.android.JavaCameraView)，用来获取和显示数据，可以在face_detect_surface_view.xml中对View组件进行替换为如下"></a>2.1 face-detection 默认使用了opencv Camera1 (org.opencv.android.JavaCameraView)，用来获取和显示数据，可以在face_detect_surface_view.xml中对View组件进行替换为如下</h4><pre><code>    <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;org.opencv.android.JavaCamera2View<br>    android:<span class="hljs-attribute">layout_width</span>=<span class="hljs-string">&quot;fill_parent&quot;</span><br>    android:<span class="hljs-attribute">layout_height</span>=<span class="hljs-string">&quot;fill_parent&quot;</span><br>    android:<span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;@+id/fd_activity_surface_view&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+
+    通过替换，可以使用Camera2中的接口来获取数据和显示View
+</code></pre>
+<p><img src="./OpenCV_FaceDetector_xml.PNG" srcset="/img/loading.gif" alt="FaceDetector_Camera2"></p>
+<h4 id="2-2-编译和构建步骤"><a href="#2-2-编译和构建步骤" class="headerlink" title="2.2 编译和构建步骤"></a>2.2 编译和构建步骤</h4><h5 id="2-2-1-通过在face-detection模块的build-gradle配置Cmake编译时2个参数"><a href="#2-2-1-通过在face-detection模块的build-gradle配置Cmake编译时2个参数" class="headerlink" title="2.2.1 通过在face-detection模块的build.gradle配置Cmake编译时2个参数"></a>2.2.1 通过在face-detection模块的build.gradle配置Cmake编译时2个参数</h5><pre><code>      OpenCV_DIR //OpenCV的路径 作用：提供编译c代码时，需要用到OpenCV的头文件 位置：sdk/native/jni/include 以及需要引入的OpenCV依赖库 
+      targets &quot;detection_based_tracker&quot;
+</code></pre>
+<p><img src="./FaceDetector_gradle.PNG" srcset="/img/loading.gif" alt="FaceDetector_Camera2"><br>          face-detection 默认引用opencv module，在通过构建脚本CMakeList.txt 编译os文件</p>
+<h5 id="2-2-2-Cmake"><a href="#2-2-2-Cmake" class="headerlink" title="2.2.2 Cmake"></a>2.2.2 Cmake</h5><p>Cmake构建脚本，包含引入OpenCV，以及本仓库需要编译的cpp文件<br> <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">cmake_minimum_required</span><span class="hljs-params">(VERSION <span class="hljs-number">3.6</span>)</span></span><br><span class="hljs-function"><span class="hljs-title">set</span><span class="hljs-params">(target detection_based_tracker)</span></span><br><span class="hljs-function"><span class="hljs-title">project</span><span class="hljs-params">($&#123;target&#125; CXX)</span></span> #已通过build.gradle中手动添加的target<br><span class="hljs-function"><span class="hljs-title">set</span><span class="hljs-params">(ANDROID_OPENCV_COMPONENTS <span class="hljs-string">&quot;opencv_java&quot;</span> CACHE STRING <span class="hljs-string">&quot;&quot;</span>)</span></span><br><span class="hljs-function"><span class="hljs-title">message</span><span class="hljs-params">(STATUS <span class="hljs-string">&quot;ANDROID_ABI=$&#123;ANDROID_ABI&#125;&quot;</span>)</span></span>#通过在Build.gradle中配置ndk abi <span class="hljs-attribute">filter</span>,默认会全部编译<br><span class="hljs-function"><span class="hljs-title">find_package</span><span class="hljs-params">(OpenCV REQUIRED COMPONENTS $&#123;ANDROID_OPENCV_COMPONENTS&#125;)</span></span><br><span class="hljs-function"><span class="hljs-title">file</span><span class="hljs-params">(GLOB srcs *.cpp *.c)</span></span><br><span class="hljs-function"><span class="hljs-title">file</span><span class="hljs-params">(GLOB hdrs *.hpp *.h)</span></span><br><span class="hljs-function"><span class="hljs-title">include_directories</span><span class="hljs-params">(<span class="hljs-string">&quot;$&#123;CMAKE_CURRENT_LIST_DIR&#125;&quot;</span>)</span></span><br><span class="hljs-function"><span class="hljs-title">add_library</span><span class="hljs-params">($&#123;target&#125; SHARED $&#123;srcs&#125; $&#123;hdrs&#125;)</span></span><br><span class="hljs-function"><span class="hljs-title">target_link_libraries</span><span class="hljs-params">($&#123;target&#125; $&#123;ANDROID_OPENCV_COMPONENTS&#125;)</span></span><br></code></pre></td></tr></table></figure></p>
+<h5 id="2-2-3-Native以及JNI编写"><a href="#2-2-3-Native以及JNI编写" class="headerlink" title="2.2.3 Native以及JNI编写"></a>2.2.3 Native以及JNI编写</h5><pre><code>此处无特别注意之处，均为标准规范
+</code></pre>
+<h3 id="3-Face-detection调整为library"><a href="#3-Face-detection调整为library" class="headerlink" title="3. Face-detection调整为library"></a>3. Face-detection调整为library</h3><pre><code>3.1 通过Camera2接口+ImageReader接口获取相机帧数据，通过OpenCV SDK中官方代码，将YUV420_888转换成为Mat
+3.2 通过OpenCV对Java接口对Mat数据进行旋转等操作，保证送入识别接口的Mat(灰度)方向正常
+3.3 此处相机分为前置后置，此处灵活处理
+</code></pre>
+<p><img src="./Mat_Rotation.PNG" srcset="/img/loading.gif" alt="FaceDetector_Camera2">    </p>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h3><h4 id="4-1-我们可以将OpenCV已编译好的so库以及include头文件单独迁移出来，直接使用Native-load-方法直接调用。此方法可以加快构建工程速度，无需再次编译libopencv-java4-so"><a href="#4-1-我们可以将OpenCV已编译好的so库以及include头文件单独迁移出来，直接使用Native-load-方法直接调用。此方法可以加快构建工程速度，无需再次编译libopencv-java4-so" class="headerlink" title="4.1 我们可以将OpenCV已编译好的so库以及include头文件单独迁移出来，直接使用Native.load()方法直接调用。此方法可以加快构建工程速度，无需再次编译libopencv_java4.so"></a>4.1 我们可以将OpenCV已编译好的so库以及include头文件单独迁移出来，直接使用Native.load()方法直接调用。此方法可以加快构建工程速度，无需再次编译libopencv_java4.so</h4><h4 id="4-2-OpenCV-FaceDetection中Nativce方法传递参数时，传递的为Mat索引，此方法减少内存以及快速将Java层Mat传递给Nativce"><a href="#4-2-OpenCV-FaceDetection中Nativce方法传递参数时，传递的为Mat索引，此方法减少内存以及快速将Java层Mat传递给Nativce" class="headerlink" title="4.2 OpenCV FaceDetection中Nativce方法传递参数时，传递的为Mat索引，此方法减少内存以及快速将Java层Mat传递给Nativce."></a>4.2 OpenCV FaceDetection中Nativce方法传递参数时，传递的为Mat索引，此方法减少内存以及快速将Java层Mat传递给Nativce.</h4><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">    <span class="hljs-comment">//第一个参数为灰度Mat,传递给Native的为Long型地址</span><br>    public void detect(Mat imageGray, MatOfRect faces) &#123;<br>        native<span class="hljs-constructor">Detect(<span class="hljs-params">mNativeObj</span>, <span class="hljs-params">imageGray</span>.<span class="hljs-params">getNativeObjAddr</span>()</span>, faces.get<span class="hljs-constructor">NativeObjAddr()</span>);<br>    &#125;<br><br>JNIEXPORT void JNICALL Java_org_opencv_samples_facedetect_DetectionBasedTracker_nativeDetect<br>(JNIEnv<span class="hljs-operator"> * </span>jenv, jclass, jlong thiz, jlong imageGray, jlong faces)<br>&#123;<br>    <span class="hljs-comment">//LOGD(&quot;Java_org_opencv_samples_facedetect_DetectionBasedTracker_nativeDetect&quot;);</span><br><br>    <span class="hljs-keyword">try</span><br>    &#123;<br>        vector&lt;Rect&gt; RectFaces;<br>        <span class="hljs-comment">//*((Mat*)imageGray) 此处将地址索引再次转为Mat</span><br>        ((DetectorAgregator*)thiz)-&gt;tracker-&gt;process(*((Mat*)imageGray));<br>        ((DetectorAgregator*)thiz)-&gt;tracker-&gt;get<span class="hljs-constructor">Objects(RectFaces)</span>;<br>        *((Mat*)faces) = <span class="hljs-constructor">Mat(RectFaces, <span class="hljs-params">true</span>)</span>;<br>    &#125;<br>    catch(const cv::Exception&amp; e)<br>    &#123;<br>        <span class="hljs-constructor">LOGD(<span class="hljs-string">&quot;nativeCreateObject caught cv::Exception: %s&quot;</span>, <span class="hljs-params">e</span>.<span class="hljs-params">what</span>()</span>);<br>        jclass je = jenv-&gt;<span class="hljs-constructor">FindClass(<span class="hljs-string">&quot;org/opencv/core/CvException&quot;</span>)</span>;<br>        <span class="hljs-keyword">if</span>(!je)<br>            je = jenv-&gt;<span class="hljs-constructor">FindClass(<span class="hljs-string">&quot;java/lang/Exception&quot;</span>)</span>;<br>        jenv-&gt;<span class="hljs-constructor">ThrowNew(<span class="hljs-params">je</span>, <span class="hljs-params">e</span>.<span class="hljs-params">what</span>()</span>);<br>    &#125;<br>    catch (...)<br>    &#123;<br>        <span class="hljs-constructor">LOGD(<span class="hljs-string">&quot;nativeDetect caught unknown exception&quot;</span>)</span>;<br>        jclass je = jenv-&gt;<span class="hljs-constructor">FindClass(<span class="hljs-string">&quot;java/lang/Exception&quot;</span>)</span>;<br>        jenv-&gt;<span class="hljs-constructor">ThrowNew(<span class="hljs-params">je</span>, <span class="hljs-string">&quot;Unknown exception in JNI code DetectionBasedTracker.nativeDetect()&quot;</span>)</span>;<br>    &#125;<br>    <span class="hljs-comment">//LOGD(&quot;Java_org_opencv_samples_facedetect_DetectionBasedTracker_nativeDetect END&quot;);</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-3-如果其他Native库使用OpenCV，我们在传入灰度数据时，也可以将Native设计为Mat地址索引"><a href="#4-3-如果其他Native库使用OpenCV，我们在传入灰度数据时，也可以将Native设计为Mat地址索引" class="headerlink" title="4.3 如果其他Native库使用OpenCV，我们在传入灰度数据时，也可以将Native设计为Mat地址索引"></a>4.3 如果其他Native库使用OpenCV，我们在传入灰度数据时，也可以将Native设计为Mat地址索引</h4><h4 id="4-4-OpenCV-FaceDetector可以跟其他人脸Landmark库配合使用，例如：FaceAlignmentSeeta，dlib等，在进行人脸关键点识别时，均需要传递为灰度Mat以及需要人脸框"><a href="#4-4-OpenCV-FaceDetector可以跟其他人脸Landmark库配合使用，例如：FaceAlignmentSeeta，dlib等，在进行人脸关键点识别时，均需要传递为灰度Mat以及需要人脸框" class="headerlink" title="4.4 OpenCV FaceDetector可以跟其他人脸Landmark库配合使用，例如：FaceAlignmentSeeta，dlib等，在进行人脸关键点识别时，均需要传递为灰度Mat以及需要人脸框"></a>4.4 OpenCV FaceDetector可以跟其他人脸Landmark库配合使用，例如：FaceAlignmentSeeta，dlib等，在进行人脸关键点识别时，均需要传递为灰度Mat以及需要人脸框</h4>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/OpenCV/">OpenCV</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenCV/">OpenCV</a>
+                    
+                  </div>
                 
               </div>
               
