@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Android_Camera_App(自有开发)</title>
+      <link href="2022/01/08/Android/Camera2/CameraAPP/"/>
+      <url>2022/01/08/Android/Camera2/CameraAPP/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-CameraAPP-1-0-1-版本"><a href="#1-CameraAPP-1-0-1-版本" class="headerlink" title="1.CameraAPP 1.0.1 版本"></a>1.CameraAPP 1.0.1 版本</h3><h4 id="1-交互区域"><a href="#1-交互区域" class="headerlink" title="1.交互区域"></a>1.交互区域</h4><pre><code>1.1 单个人 脸区域美颜1.2 多人头部贴图功能1.3 单个人 大眼功能</code></pre><h4 id="2-保存图片"><a href="#2-保存图片" class="headerlink" title="2.保存图片"></a>2.保存图片</h4><p><img src="./SVID_20220108_203535_1.gif" alt="1.0.1使用GIF"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android Camera2 APP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> APP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>dlib</title>
       <link href="2022/01/08/Face/dlib/"/>
       <url>2022/01/08/Face/dlib/</url>
