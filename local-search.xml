@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>dlib</title>
+    <link href="/2022/01/08/Face/dlib/"/>
+    <url>/2022/01/08/Face/dlib/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>编译SeetaFace库</title>
+    <link href="/2022/01/08/Face/SeetaFace/"/>
+    <url>/2022/01/08/Face/SeetaFace/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h3><pre><code>疫情期间，歇业在家，偶遇github工程，便将其调整单独的Android的library库，调整JNI层接口以及内部方法实现。</code></pre><p>工程结构图<br>硬件：Huaiwe Mate 20 Pro 前置摄像头<br>软件：Camera2+SeetaFaceAlignment+OpenCV<br><img src="./Seeta_Project.PNG" alt="Project Struct"></p><h3 id="2-调整Cmake编译环境以及构建脚本"><a href="#2-调整Cmake编译环境以及构建脚本" class="headerlink" title="2. 调整Cmake编译环境以及构建脚本"></a>2. 调整Cmake编译环境以及构建脚本</h3><p>借鉴于OpenCV FaceDetection，调整Cmake编译脚本，引入OpenCV依赖，并引入FaceAlignment依赖，生成libseeta_fa_lib.so文件<br><img src="./Seeta_OpenCV.PNG" alt="Cmake+OpenCV"><br><img src="./Seeta_OpenCV_Build.PNG" alt="Cmake+Gradle"></p><h3 id="3-调整Native接口"><a href="#3-调整Native接口" class="headerlink" title="3. 调整Native接口"></a>3. 调整Native接口</h3><p>进行重新编写后，提供2个Native方式，<br>方法1初始化FaceAlignment,并返回索引<br>方法2，传入 FaceAlignment索引   face(OpenCV FaceDetector 人脸区域) OpenCV Mat(灰度)<br><img src="./Seeta_resouce_code.PNG" alt="Seeta+JNI"></p><p>第二个参数的使用，此处便是JNI将java对象传递给Native，先通过类名反射寻找到类，以及生成类对应的字段。然后通过getIntField(Object,x)获取Value.此处值得学习<br>第三个参数借鉴于OpenCV SDK,中直接将Mat的索引地址传入，简洁快捷</p><h3 id="4-运行结果"><a href="#4-运行结果" class="headerlink" title="4. 运行结果"></a>4. 运行结果</h3><p>人脸的区域识别依赖于OpenCV FaceDetector<br>人脸的关键点，眼睛，嘴角的识别不够准确，通过相机识别多帧，晃动较大<br><img src="./Seeta_real_face.jpeg" alt="Seeta+Result"></p><h3 id="5-结论"><a href="#5-结论" class="headerlink" title="5. 结论"></a>5. 结论</h3><p><a href="https://github.com/seetaface/SeetaFaceEngine2">SeetaFaceEngine2</a><br>主要此工程中迁移出来<a href="https://github.com/MrYeLiang/Android-OpenGL-Filter">Android-OpenGL_Filter</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Android OpenCV FaceLandmark</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SeetaFace</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>FaceDetector</title>
     <link href="/2022/01/07/OpenCV/FaceDetector/"/>
     <url>/2022/01/07/OpenCV/FaceDetector/</url>
