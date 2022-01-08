@@ -58,14 +58,14 @@
     <link href="http://example.com/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/"/>
     <id>http://example.com/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/</id>
     <published>2022-01-07T01:46:14.000Z</published>
-    <updated>2022-01-08T01:57:08.718Z</updated>
+    <updated>2022-01-08T02:01:56.089Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念:"></a>基本概念:</h3><p><img src="../Camera2_GlSurfaceView/OpenGLES_Camera_Screen_Orientation.png" alt="ScreenOrientation"></p><h3 id="打开相机"><a href="#打开相机" class="headerlink" title="打开相机"></a>打开相机</h3><p>怎么就一直加载不出图片</p><h3 id="显示相机"><a href="#显示相机" class="headerlink" title="显示相机"></a>显示相机</h3><h3 id="使用ImageReader"><a href="#使用ImageReader" class="headerlink" title="使用ImageReader"></a>使用ImageReader</h3><h3 id="Image转码"><a href="#Image转码" class="headerlink" title="Image转码"></a>Image转码</h3>]]></content>
+    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念:"></a>基本概念:</h3><p><img src="OpenGLES_Camera_Screen_Orientation.png" alt="ScreenOrientation"></p><h3 id="打开相机"><a href="#打开相机" class="headerlink" title="打开相机"></a>打开相机</h3><p>怎么就一直加载不出图片</p><h3 id="显示相机"><a href="#显示相机" class="headerlink" title="显示相机"></a>显示相机</h3><h3 id="使用ImageReader"><a href="#使用ImageReader" class="headerlink" title="使用ImageReader"></a>使用ImageReader</h3><h3 id="Image转码"><a href="#Image转码" class="headerlink" title="Image转码"></a>Image转码</h3>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念:&quot;&gt;&lt;/a&gt;基本概念:&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;../Camera2_GlSurfaceView/OpenGLES_Camera_Screen_Or</summary>
+    <summary type="html">&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念:&quot;&gt;&lt;/a&gt;基本概念:&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;OpenGLES_Camera_Screen_Orientation.png&quot; alt=&quot;Scree</summary>
       
     
     
