@@ -17,25 +17,9 @@
   <meta name="description" content="个人小站点">
   <meta name="author" content="张xiao博">
   <meta name="keywords" content="Android">
-  <title>编译dlib For Android - 学习/分享/记录</title>
+  <title>分类 - OpenGLES Android Shader - 学习/分享/记录</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -64,7 +48,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -230,46 +214,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="编译dlib For Android">
+            <span class="h2" id="subtitle" title="分类 - OpenGLES Android Shader">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-08 15:53" pubdate>
-        2022年1月8日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      501 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      5
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -282,105 +229,40 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2022</p>
+    
+    <a href="/2022/01/07/Android/OpelGLES/OpenGLES_FBO/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">OpenGLES_FBO使用</span>
+      <time style="float: right;">01-07</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">编译dlib For Android</h1>
-            
-            <div class="markdown-body">
-              <h3 id="1-Dlib基础"><a href="#1-Dlib基础" class="headerlink" title="1. Dlib基础"></a>1. Dlib基础</h3><pre><code>偶然看到dlib中有个模块可以对人脸进行68个标记,所以在github上寻找可以在Android平台使用的库。参照[Luca96/android-face-landmarks]已经实现，通过对编译脚本，JNI接口调整，以及对OpenCV 头文件依赖的版本修改，实现了将dlib 19.16 +OpenCV4.5.2整合，同时可以单独编译成library.
-</code></pre>
-<p><img src="./dlib_Format.jpg" srcset="/img/loading.gif" alt="Dlib人脸Landmark"><br>    已实现工程结构如下：<br><img src="./dlib_Project_Struct.PNG" srcset="/img/loading.gif" alt="dlib_project">,注意：此时asset工程未放入models文件。<br><a target="_blank" rel="noopener" href="https://github.com/davisking/dlib-models">models</a>,在这里下载model文件导入后，运行。不同的model文件对应不同的位置的表姐。</p>
-<h3 id="2-Dlib依赖OpenCV库升级"><a href="#2-Dlib依赖OpenCV库升级" class="headerlink" title="2. Dlib依赖OpenCV库升级"></a>2. Dlib依赖OpenCV库升级</h3><pre><code>原作者(Luca96)在编译基于dlib库生成dlibface-lib时，使用的OpenCV版本为4.0.1,由于我的Android工程使用的OpenCV SDK 版本为4.5.2，所以需要对face_dlib工程中，dlib的头文件基于OpenCV编写的头文件进行调整实现。
-文件路径face_dlib/src/main/cppLibs/dlib/opencv/cv_image.h，此处调整的实现为OpenCV中Mat与IplImage转换，需要方法实现，老版本可以直接转。此文件中包含2处，均需要进行修改替换。
-</code></pre>
-<p><img src="./dlib_C++_Change_Code.PNG" srcset="/img/loading.gif" alt="dlib_change_code"> </p>
-<h3 id="3-调整Cmake构建脚本"><a href="#3-调整Cmake构建脚本" class="headerlink" title="3. 调整Cmake构建脚本"></a>3. 调整Cmake构建脚本</h3><pre><code>原工程中的OpenCV依赖以及构建脚本为特定目录，此处借鉴OpenCV SDK中官方例子，进行调整（整个工程依赖唯一一个module OpenCV SDK)
-</code></pre>
-<p><img src="./dlib_Cmake_OpenCV.PNG" srcset="/img/loading.gif" alt="dlib_Cmake_OpenCV"><br><img src="./dlib_OpenCV_Link.PNG" srcset="/img/loading.gif" alt="dlib_OpenCV_link">    </p>
-<h3 id="4-调整JNI方法实现"><a href="#4-调整JNI方法实现" class="headerlink" title="4. 调整JNI方法实现"></a>4. 调整JNI方法实现</h3><pre><code>原实现JNI接口这里传入的yuvFrame,以及旋转角度等数据，我进行修改。传入的Mat的地址索引，旋转角度已经通过OpenCV.Core类进行了处理(人脸检测时已处理)，这里仅传入灰度数据即可。
-</code></pre>
-<p><img src="./dlib_Jni_Change.PNG" srcset="/img/loading.gif" alt="dlib_change_code">        </p>
-<h3 id="5-运行结果"><a href="#5-运行结果" class="headerlink" title="5. 运行结果"></a>5. 运行结果</h3><p><img src="./dlib_Real_Face.jpeg" srcset="/img/loading.gif" alt="dlib_real_face 红色标注"><br>其他：绿色标注为OpenCV Face Detector以及 FaceAlignmentSeeta</p>
-<h3 id="6-参照"><a href="#6-参照" class="headerlink" title="6. 参照"></a>6. 参照</h3><p><a target="_blank" rel="noopener" href="https://github.com/Luca96/android-face-landmarks">Luca96/android-face-landmarks</a>,此博主提供了dlib编译交叉编译的步骤，由于我此时Ubuntu环境已破坏，所以直接使用了已经预编译的so文件。<br><a target="_blank" rel="noopener" href="https://github.com/davisking/dlib-models">dlib=models</a>,支持多个model，应对不同的场景（鼻子，嘴巴）等<br><a target="_blank" rel="noopener" href="https://github.com/Luca96/dlib-for-android">Luca96/dlib-for-android</a></p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/FaceLandmark-OpenCV/">FaceLandmark OpenCV</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/FaceLandmark/">FaceLandmark</a>
-                    
-                  </div>
-                
+
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/01/08/Android/Camera2/CameraAPP/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">开发Android_Camera_App</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/01/08/Face/SeetaFace/">
-                        <span class="hidden-mobile">编译SeetaFace人脸5个关键点库</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -463,15 +345,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
