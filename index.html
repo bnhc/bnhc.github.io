@@ -214,7 +214,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="如果你寻找到了这里，那我就在你眼前">
+            <span class="h2" id="subtitle" title="世界到底是谁的！">
               
             </span>
 
@@ -242,6 +242,144 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/14/Android/MediaCodec/GLSurface+MediaCodec/">使用GLSurfaceView+MediaCodec播放音视频</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/14/Android/MediaCodec/GLSurface+MediaCodec/">
+          
+          
+            
+          
+          此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善1. 创建GLSurfaceView以及自定义Render   GLSurfaceView无特殊，自定义Render这里需要留意需要公开方法返回一个Surface.
+   Surface的创建与通过GLSurfaceView显示相机画面的套路一模一样，
+   1.1 创建OES纹理ID
+   1.2 绑定OES_ID到 SurfaceTextu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-14 17:24" pubdate>
+              2022-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/OpenGLES-MediaCodec/">OpenGLES MediaCodec</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MediaCodec/">MediaCodec</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/14/Android/Zxing/128/">Zxing 128条码识别</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/14/Android/Zxing/128/">
+          
+          
+            
+          
+          
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-14 16:49" pubdate>
+              2022-01-14
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/14/Android/OpenGLES/OpenGLES_Texture/">Android 多人脸贴图</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/14/Android/OpenGLES/OpenGLES_Texture/">
+          
+          
+            
+          
+          1. 效果图
+2. 前置条件1. 通过GLSurfaceView 以及自定义Render(OES纹理)绘制相机画面，同时创建FBO纹理,用于进行贴图
+2. 同时通过ImageReader读取相机原画面，传入人脸关键点识别，获取关键特征点
+
+3. 人脸关键点以及偏转角度计算3.1 选取关键点，计算顶点坐标
+    我们可以选取人脸特点中具备对称的2个点。出现头部方向旋转时，可以通过这两个点来计算出头
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-14 16:42" pubdate>
+              2022-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/OpenGLES-Android-Shader/">OpenGLES Android Shader</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/OpenGLES/">OpenGLES</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -454,11 +592,11 @@ SDK For Android 均包含在官方提供的opencv moudle中。
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/01/07/Android/OpelGLES/OpenGLES_FBO/">OpenGLES_FBO使用</a>
+        <a href="/2022/01/07/Android/OpenGLES/OpenGLES_FBO/">OpenGLES_FBO使用</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2022/01/07/Android/OpelGLES/OpenGLES_FBO/">
+        <a href="/2022/01/07/Android/OpenGLES/OpenGLES_FBO/">
           
           
             
@@ -601,148 +739,19 @@ String### 1. String 实现了接口列表
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java集合结构学习</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/13/java/util/java%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">
-          
-          
-            
-          
-          源码类图
-源码学习1.List1.1 Vector
-在线查看
-
-Vector实现是数组，默认空构造方法长度为10，也可以根据传入initialCapacity
-  12345678910111213public Vector(int initialCapacity, int capacityIncrement) &#123;    super();    if (initialCapacity &
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-13 20:41" pubdate>
-              2020-12-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Java%E6%BA%90%E7%A0%81/">Java源码</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java%E6%BA%90%E7%A0%81/">Java源码</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/12/my-site/">Hexo+Github+fluid搭建</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/12/my-site/">
-          
-          
-            
-          
-          Hexo+Github+fluid搭建记录主体流程1.Github 注册账号,创建”*.github.io”的仓库2.安装Node.js后,使用npm install hexo3.修改默认theme为fluid
-需要参考的链接GithubNode.jsHexoFluid
-创建博客的原因
-一名Android开发
-
-日常记录以上这些模块曾经已经整理详细学习记录（软件&amp;硬件知识)，希望在后续维护
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-12 19:10" pubdate>
-              2020-12-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">工具使用记录</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/12/hello-world/">Hello World</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/12/hello-world/">
-          
-          
-            
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-12 19:04" pubdate>
-              2020-12-12
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
 
 
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

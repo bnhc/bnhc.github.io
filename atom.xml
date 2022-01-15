@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-09T02:29:29.390Z</updated>
+  <updated>2022-01-15T08:20:35.084Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,13 +17,74 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用GLSurfaceView+MediaCodec播放音视频</title>
+    <link href="http://example.com/2022/01/14/Android/MediaCodec/GLSurface+MediaCodec/"/>
+    <id>http://example.com/2022/01/14/Android/MediaCodec/GLSurface+MediaCodec/</id>
+    <published>2022-01-14T09:24:06.000Z</published>
+    <updated>2022-01-15T08:20:35.084Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善"><a href="#此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善" class="headerlink" title="此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善"></a>此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善</h5><h3 id="1-创建GLSurfaceView以及自定义Render"><a href="#1-创建GLSurfaceView以及自定义Render" class="headerlink" title="1. 创建GLSurfaceView以及自定义Render"></a>1. 创建GLSurfaceView以及自定义Render</h3><pre><code>   GLSurfaceView无特殊，自定义Render这里需要留意需要公开方法返回一个Surface.   Surface的创建与通过GLSurfaceView显示相机画面的套路一模一样，   1.1 创建OES纹理ID   1.2 绑定OES_ID到 SurfaceTexture上   1.3 SurfaceTexture设置setOnFrameAvailableListener，用以调用刷新glSurfaceView.requsetRender()</code></pre><h3 id="2-MediaCodec使用-音视频使用相同策略"><a href="#2-MediaCodec使用-音视频使用相同策略" class="headerlink" title="2. MediaCodec使用(音视频使用相同策略)"></a>2. MediaCodec使用(音视频使用相同策略)</h3><pre><code>   2.2 初始化Extractor   2.2 创建MediaCodec   2.3 设置Surface到MediaCodec中，开始解码   2.4 将Extractor获取的数据压入解码器的缓冲区，将缓冲区的数据拉取渲染，释放当前缓冲区   2.5 循环2.4步，直至获取EOS结束标志   2.6 结束</code></pre><h3 id="3-效果"><a href="#3-效果" class="headerlink" title="3. 效果"></a>3. 效果</h3><pre><code>   将相机FBO纹理通过EGL(EGLSurface)和MediaCodec编码后生成mp4文件，然后使用GLSurface+MediaCodec播放</code></pre><p><img src="./GLSurfaceView_Codec_Sample_01.gif" alt="GLSurfaceView+MediaCodec"> </p><h3 id="4-0-其他知识"><a href="#4-0-其他知识" class="headerlink" title="4.0 其他知识"></a>4.0 其他知识</h3><p>EGL<br>OpenGL<br>MediaCodec<br><a href="https://juejin.cn/user/3175045310197255">MediaCodec参照资料</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善&quot;&gt;&lt;a href=&quot;#此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善&quot; class=&quot;headerlink&quot; title=&quot;此部分仍有相关知识未理清，暂时仅用作记录，后续需要完善&quot;&gt;&lt;/a&gt;此部分仍有</summary>
+      
+    
+    
+    
+    <category term="OpenGLES MediaCodec" scheme="http://example.com/categories/OpenGLES-MediaCodec/"/>
+    
+    
+    <category term="MediaCodec" scheme="http://example.com/tags/MediaCodec/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zxing 128条码识别</title>
+    <link href="http://example.com/2022/01/14/Android/Zxing/128/"/>
+    <id>http://example.com/2022/01/14/Android/Zxing/128/</id>
+    <published>2022-01-14T08:49:31.000Z</published>
+    <updated>2022-01-14T08:49:31.834Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android 多人脸贴图</title>
+    <link href="http://example.com/2022/01/14/Android/OpenGLES/OpenGLES_Texture/"/>
+    <id>http://example.com/2022/01/14/Android/OpenGLES/OpenGLES_Texture/</id>
+    <published>2022-01-14T08:42:25.000Z</published>
+    <updated>2022-01-15T07:27:12.796Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-效果图"><a href="#1-效果图" class="headerlink" title="1. 效果图"></a>1. 效果图</h3><p><img src="./Face_Stick_Sample_01.gif" alt="多人人脸贴图"><br><img src="./Face_Stick_Sample_02.gif" alt="单人人脸贴图"></p><h3 id="2-前置条件"><a href="#2-前置条件" class="headerlink" title="2. 前置条件"></a>2. 前置条件</h3><pre><code>1. 通过GLSurfaceView 以及自定义Render(OES纹理)绘制相机画面，同时创建FBO纹理,用于进行贴图2. 同时通过ImageReader读取相机原画面，传入人脸关键点识别，获取关键特征点</code></pre><h3 id="3-人脸关键点以及偏转角度计算"><a href="#3-人脸关键点以及偏转角度计算" class="headerlink" title="3. 人脸关键点以及偏转角度计算"></a>3. 人脸关键点以及偏转角度计算</h3><pre><code>3.1 选取关键点，计算顶点坐标    我们可以选取人脸特点中具备对称的2个点。出现头部方向旋转时，可以通过这两个点来计算出头部倾斜的夹角。    然后利用倾斜角便可以计算出运算后四个顶点坐标</code></pre><p><img src="./Texture_Stick_1.png" alt="Texture_Vertext"></p><pre><code>3.2 绘制    glViewport(0,0,width,height)//这里的绘制的GL宽高仍然为全屏幕    贴图的顶点坐标由3.1获取,实现2D贴图绘制即可。这里注意的是使用的FBO纹理，Y轴坐标获取后都需要进行反转    </code></pre><h3 id="4-上传2D纹理贴图"><a href="#4-上传2D纹理贴图" class="headerlink" title="4. 上传2D纹理贴图"></a>4. 上传2D纹理贴图</h3><pre><code>    此处省略</code></pre><h3 id="5-其他实现思路"><a href="#5-其他实现思路" class="headerlink" title="5. 其他实现思路"></a>5. 其他实现思路</h3><pre><code>   5.1 定义glViewPort(x,y,widht,height)，直接将其设置为贴图的位置。存在问题：由于此处设置的矩形，在旋转时，便会出现矩形某个方向拉伸变形问题。   5.2 仅定义左下，右下顶点，(左上右上均在2者基础上加入图片高度)，通过Matrix矩阵进行旋转，通过测试结果显示会产生形变，效果不好。</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;1-效果图&quot;&gt;&lt;a href=&quot;#1-效果图&quot; class=&quot;headerlink&quot; title=&quot;1. 效果图&quot;&gt;&lt;/a&gt;1. 效果图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;./Face_Stick_Sample_01.gif&quot; alt=&quot;多人人脸贴图&quot;&gt;&lt;br&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="OpenGLES Android Shader" scheme="http://example.com/categories/OpenGLES-Android-Shader/"/>
+    
+    
+    <category term="OpenGLES" scheme="http://example.com/tags/OpenGLES/"/>
+    
+  </entry>
+  
+  <entry>
     <title>开发Android_Camera_App</title>
     <link href="http://example.com/2022/01/08/Android/Camera2/CameraAPP/"/>
     <id>http://example.com/2022/01/08/Android/Camera2/CameraAPP/</id>
     <published>2022-01-08T12:47:44.000Z</published>
-    <updated>2022-01-09T02:29:29.390Z</updated>
+    <updated>2022-01-14T09:31:07.842Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-CameraAPP-1-0-1-版本"><a href="#1-CameraAPP-1-0-1-版本" class="headerlink" title="1.CameraAPP 1.0.1 版本"></a>1.CameraAPP 1.0.1 版本</h3><h4 id="1-交互区域"><a href="#1-交互区域" class="headerlink" title="1.交互区域"></a>1.交互区域</h4><pre><code>1.1 单个人 脸区域美颜1.2 多人头部贴图功能1.3 单个人 大眼功能</code></pre><h4 id="2-保存图片"><a href="#2-保存图片" class="headerlink" title="2.保存图片"></a>2.保存图片</h4><p><img src="./SVID_20220108_203535_1.gif" alt="1.0.1 版本"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="1-CameraAPP-1-0-1-版本"><a href="#1-CameraAPP-1-0-1-版本" class="headerlink" title="1.CameraAPP 1.0.1 版本"></a>1.CameraAPP 1.0.1 版本</h3><h4 id="1-交互区域"><a href="#1-交互区域" class="headerlink" title="1.交互区域"></a>1.交互区域</h4><pre><code>1.1 单个人 脸区域美颜1.2 多人头部贴图功能1.3 单个人 大眼功能</code></pre><h4 id="2-保存图片"><a href="#2-保存图片" class="headerlink" title="2.保存图片"></a>2.保存图片</h4><p><img src="./148_320_.gif" alt="1.0.1 版本"></p>]]></content>
     
     
       
@@ -114,8 +175,8 @@
   
   <entry>
     <title>OpenGLES_FBO使用</title>
-    <link href="http://example.com/2022/01/07/Android/OpelGLES/OpenGLES_FBO/"/>
-    <id>http://example.com/2022/01/07/Android/OpelGLES/OpenGLES_FBO/</id>
+    <link href="http://example.com/2022/01/07/Android/OpenGLES/OpenGLES_FBO/"/>
+    <id>http://example.com/2022/01/07/Android/OpenGLES/OpenGLES_FBO/</id>
     <published>2022-01-07T01:48:00.000Z</published>
     <updated>2022-01-09T02:22:35.645Z</updated>
     
@@ -213,9 +274,9 @@
     <link href="http://example.com/2020/12/12/my-site/"/>
     <id>http://example.com/2020/12/12/my-site/</id>
     <published>2020-12-12T11:10:53.000Z</published>
-    <updated>2021-09-14T14:17:57.478Z</updated>
+    <updated>2022-01-15T08:23:12.016Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Hexo-Github-fluid搭建记录"><a href="#Hexo-Github-fluid搭建记录" class="headerlink" title="Hexo+Github+fluid搭建记录"></a>Hexo+Github+fluid搭建记录</h2><h4 id="主体流程"><a href="#主体流程" class="headerlink" title="主体流程"></a>主体流程</h4><p>1.Github 注册账号,创建”*.github.io”的仓库<br>2.安装Node.js后,使用npm install hexo<br>3.修改默认theme为fluid</p><h3 id="需要参考的链接"><a href="#需要参考的链接" class="headerlink" title="需要参考的链接"></a>需要参考的链接</h3><p><a href="https://github.com/">Github</a><br><a href="https://nodejs.org/">Node.js</a><br><a href="https://hexo.io/zh-cn/">Hexo</a><br><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></p><h2 id="创建博客的原因"><a href="#创建博客的原因" class="headerlink" title="创建博客的原因"></a>创建博客的原因</h2><ol><li><p>一名Android开发</p><ol><li>日常记录<br>以上这些模块曾经已经整理详细学习记录（软件&amp;硬件知识)，希望在后续维护中，补充上来！！！</li></ol></li><li><p>其他知识模块如下</p><p> 2.1 Android Camera(相机应用)<br> 2.2 Android OpenGLES(图像处理)<br> 2.3 Android AI(TFLite)</p></li><li><p>学习方向<br> 3.1 美颜算法了解和学习<br> 3.2 算法题</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="Hexo-Github-fluid搭建记录"><a href="#Hexo-Github-fluid搭建记录" class="headerlink" title="Hexo+Github+fluid搭建记录"></a>Hexo+Github+fluid搭建记录</h2><h4 id="主体流程"><a href="#主体流程" class="headerlink" title="主体流程"></a>主体流程</h4><p>1.Github 注册账号,创建”*.github.io”的仓库<br>2.安装Node.js后,使用npm install hexo<br>3.修改默认theme为fluid</p><h3 id="需要参考的链接"><a href="#需要参考的链接" class="headerlink" title="需要参考的链接"></a>需要参考的链接</h3><p><a href="https://github.com/">Github</a><br><a href="https://nodejs.org/">Node.js</a><br><a href="https://hexo.io/zh-cn/">Hexo</a><br><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></p><h2 id="创建博客的原因"><a href="#创建博客的原因" class="headerlink" title="创建博客的原因"></a>创建博客的原因</h2><ol><li><p>一名Android开发</p><ol><li>日常记录<br>以上这些模块曾经已经整理详细学习记录（软件&amp;硬件知识)，希望在后续维护中，补充上来！！！</li></ol></li><li><p>其他知识模块如下</p><p> 2.1 Android Camera(相机应用)<br> 2.2 Android OpenGLES(图像处理)<br> 2.3 Android AI(TFLite)</p></li><li><p>学习方向<br> 3.1人脸算法了解和学习<br> 3.2 算法题</p></li></ol>]]></content>
     
     
       

@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" type="image/png" href="/img/favicon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="个人小站点">
+  <meta name="author" content="张xiao博">
+  <meta name="keywords" content="Android">
+  <title>OpenGLES_FBO使用 - 学习/分享/记录</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="学习/分享/记录" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>张小博</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    Android
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    OpenGLES
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    Java源码
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    Camera知识
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    硬件
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    算法
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    AI应用
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    其他
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="OpenGLES_FBO使用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-07 09:48" pubdate>
+        2022年1月7日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OpenGLES_FBO使用</h1>
+            
+            <div class="markdown-body">
+              <h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><pre><code> 1. Android系统默认渲染器 OpenGL,系统启动时，经过BootLoader启动，kernel启动----&gt;init进程启动核心进程（ServiceManager,zygote,OpenGL)----&gt;播放开机动画
+        OpenGL渲染管线的最后一个阶段就是帧缓冲区（FrameBuffer)
+
+ 2. OpenGL渲染管线的最后阶段FrameBuffer,Android系统存在默认缓冲区（window-system-provided frame),用于屏幕显示。GPU往显示缓冲区写入数据时，屏幕会显示缓冲内容。
+        使用FBO可以让数据不渲染到屏幕上，渲染到离屏的Buffer中
+        Android中后台给视频添加水印，Camera实时滤镜，需要把原数据经过处理后保存但是不显示数据
+
+ 3.对于默认的相机，使用系统提供的OpenGL渲染的帧缓冲区（OES），OpenGL所有渲染结果直接到达帧缓冲区----&gt;on-Srceen渲染方式
+       对于贴纸相机，使用帧缓冲区对象，OpenGL将提供给窗口的帧缓冲区重定向FBO之中
+
+ 4. FBO提供缓冲区：颜色缓冲区，深度缓冲区，模板缓冲区
+        FBO提供2种绑定的对象：纹理图片(texture images) 和 渲染图像(renderbuffer images) 
+        4.1 纹理绑定FBO,OpenGL执行渲染到纹理操作
+        4.2 渲染绑定FBO，OpenGL执行离屏渲染
+        4.3 通过GL_MAX_COLOR_ATTACHMENTS查询颜色缓冲区挂节点
+        4.4 纹理对象 glFramebufferTexture2D
+            渲染对象 glFramebufferRenderbuffer
+ 5. FBO (Frame Buffer Object) 帧缓冲区对象，FBO本身不能用于渲染，只有添加了纹理或者渲染缓冲区后才能作为渲染目标            
+
+ 6. FBO 使用流程图
+</code></pre>
+<p><img src="./Android_OpenGLES_OES.jpg" srcset="/img/loading.gif" alt="FBO"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="1-搭建基本OpenGLES-FBO-仅输出-纹理对象"><a href="#1-搭建基本OpenGLES-FBO-仅输出-纹理对象" class="headerlink" title="1.搭建基本OpenGLES FBO 仅输出 纹理对象"></a>1.搭建基本OpenGLES FBO 仅输出 纹理对象</h4><h4 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h4> <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">protected</span> <span class="hljs-built_in">int</span>[] mFrameBuffers;<br><span class="hljs-keyword">protected</span> <span class="hljs-built_in">int</span>[] mFrameBufferTextures;<br></code></pre></td></tr></table></figure>
+<h4 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h4><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GlUtil</span>.</span></span>check<span class="hljs-constructor">GlError(TAG, <span class="hljs-string">&quot;[onReady()][Start]&quot;</span>)</span>;<br>super.on<span class="hljs-constructor">Ready(<span class="hljs-params">width</span>, <span class="hljs-params">height</span>)</span>;<br><span class="hljs-keyword">if</span> (mFrameBuffers != null) &#123;<br>       destroy<span class="hljs-constructor">FrameBuffers()</span>;<br>&#125;<br>mFrameBuffers = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[<span class="hljs-number">1</span>]</span>;<br><span class="hljs-comment">//1 创建fbo</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">GenFramebuffers(<span class="hljs-params">mFrameBuffers</span>.<span class="hljs-params">length</span>, <span class="hljs-params">mFrameBuffers</span>, 0)</span>;<br>mFrameBufferTextures = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[<span class="hljs-number">1</span>]</span>;<br><span class="hljs-comment">//2 创建fbo纹理</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GlUtil</span>.</span></span>gl<span class="hljs-constructor">ConfigureTextures(<span class="hljs-params">mFrameBufferTextures</span>)</span>;<br><span class="hljs-comment">//3 绑定纹理</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindTexture(GLES20.GL_TEXTURE_2D, <span class="hljs-params">mFrameBufferTextures</span>[0])</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, <span class="hljs-params">mOutputWidth</span>, <span class="hljs-params">mOutputHeight</span>, 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, <span class="hljs-params">null</span>)</span>;<br><span class="hljs-comment">//4 fbo绑定纹理</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindFramebuffer(GLES20.GL_FRAMEBUFFER, <span class="hljs-params">mFrameBuffers</span>[0])</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">FramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, <span class="hljs-params">mFrameBufferTextures</span>[0], 0)</span>;<br><span class="hljs-comment">//5 解绑</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindTexture(GLES20.GL_TEXTURE_2D, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindFramebuffer(GLES20.GL_FRAMEBUFFER, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GlUtil</span>.</span></span>check<span class="hljs-constructor">GlError(TAG, <span class="hljs-string">&quot;[onReady()][End]&quot;</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-使用FBO处理图片滤镜-自己创建FrameBuffer-同时输出到纹理对象，渲染对象"><a href="#2-使用FBO处理图片滤镜-自己创建FrameBuffer-同时输出到纹理对象，渲染对象" class="headerlink" title="2.使用FBO处理图片滤镜(自己创建FrameBuffer,同时输出到纹理对象，渲染对象)"></a>2.使用FBO处理图片滤镜(自己创建FrameBuffer,同时输出到纹理对象，渲染对象)</h4><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">public void create<span class="hljs-constructor">Envi()</span> &#123;<br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Log</span>.</span></span>d(TAG, <span class="hljs-string">&quot;[createEnvi]&quot;</span>);<br>       <span class="hljs-comment">//创建帧缓冲对象</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">GenFramebuffers(1, <span class="hljs-params">fFrame</span>, 0)</span>;<br><br>       <span class="hljs-comment">//创建渲染缓冲对象</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">GenRenderbuffers(1, <span class="hljs-params">fRender</span>, 0)</span>;<br>       <span class="hljs-comment">//相似地，我们打算把渲染缓冲对象绑定，这样所有后续渲染缓冲操作都会影响到当前的渲染缓冲对象</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindRenderbuffer(GLES20.GL_RENDERBUFFER, <span class="hljs-params">fRender</span>[0])</span>;<br>       <span class="hljs-comment">//创建一个深度和模板渲染缓冲对象</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">RenderbufferStorage(GLES20.GL_RENDERBUFFER, GLES20.GL_DEPTH_COMPONENT16, <span class="hljs-params">mBitmap</span>.<span class="hljs-params">getWidth</span>()</span>, mBitmap.get<span class="hljs-constructor">Height()</span>);<br>       <span class="hljs-comment">//附加帧缓冲 渲染缓冲对象附加到帧缓冲的深度和模板附件</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">FramebufferRenderbuffer(GLES20.GL_FRAMEBUFFER, GLES20.GL_DEPTH_ATTACHMENT, GLES20.GL_RENDERBUFFER, <span class="hljs-params">fRender</span>[0])</span>;<br>       <span class="hljs-comment">//解绑渲染缓冲</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindRenderbuffer(GLES20.GL_RENDERBUFFER, 0)</span>;<br><br><br>       <span class="hljs-comment">//fTexture size 2</span><br>       <span class="hljs-comment">//fTexture[0] 普通纹理（由bitmap转成)</span><br>       <span class="hljs-comment">//fTexture[1] 帧缓冲纹理(GLES20.glTextImage2D)</span><br>       <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">GenTextures(2, <span class="hljs-params">fTexture</span>, 0)</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindTexture(GLES20.GL_TEXTURE_2D, <span class="hljs-params">fTexture</span>[<span class="hljs-params">i</span>])</span>;<br>            <span class="hljs-keyword">if</span> (i<span class="hljs-operator"> == </span><span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLUtils</span>.</span></span>tex<span class="hljs-constructor">Image2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, <span class="hljs-params">mBitmap</span>, 0)</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//纹理的维度设置为图片的大小,传递null作为纹理的data,只分配内存，不写入数据</span><br>                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, <span class="hljs-params">mBitmap</span>.<span class="hljs-params">getWidth</span>()</span>, mBitmap.get<span class="hljs-constructor">Height()</span>, <span class="hljs-number">0</span>, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);<br>            &#125;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_NEAREST)</span>;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR)</span>;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE)</span>;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">TexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE)</span>;<br>       &#125;<br>       mBuffer = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ByteBuffer</span>.</span></span>allocate(mBitmap.get<span class="hljs-constructor">Width()</span><span class="hljs-operator"> * </span>mBitmap.get<span class="hljs-constructor">Height()</span><span class="hljs-operator"> * </span><span class="hljs-number">4</span>);<br>&#125; <br>    <br><span class="hljs-comment">//绑定执行</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindFramebuffer(GLES20.GL_FRAMEBUFFER, <span class="hljs-params">fFrame</span>[0])</span>;<br><br><span class="hljs-comment">//将创建好的帧缓冲纹理附加到帧缓冲 纹理对象</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">FramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, <span class="hljs-params">fTexture</span>[1], 0)</span>;<br><br><span class="hljs-comment">//FBO挂接 渲染对象 Renderbuffer 渲染缓冲 对象的一大优点是，它以OpenGL原生渲染格式储存它的数据，因此在离屏渲染到帧缓冲的时候，这些数据就相当于被优化过的了</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">FramebufferRenderbuffer(GLES20.GL_FRAMEBUFFER, GLES20.GL_DEPTH_ATTACHMENT, GLES20.GL_RENDERBUFFER, <span class="hljs-params">fRender</span>[0])</span>;<br><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">Viewport(0, 0, <span class="hljs-params">mBitmap</span>.<span class="hljs-params">getWidth</span>()</span>, mBitmap.get<span class="hljs-constructor">Height()</span>);<br>mFilter.set<span class="hljs-constructor">TextureId(<span class="hljs-params">fTexture</span>[0])</span>;<br>mFilter.draw<span class="hljs-literal">()</span>;    <br><br><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">ReadPixels(0, 0, <span class="hljs-params">mBitmap</span>.<span class="hljs-params">getWidth</span>()</span>, mBitmap.get<span class="hljs-constructor">Height()</span>, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, mBuffer);<br><span class="hljs-keyword">if</span> (mCallback != null) &#123;<br>       mCallback.on<span class="hljs-constructor">Call(<span class="hljs-params">mBuffer</span>)</span>;<br>&#125;<br><br>delete<span class="hljs-constructor">Envi()</span>;<br>mBitmap.recycle<span class="hljs-literal">()</span>;<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="3-使用FBO处理相机纹理"><a href="#3-使用FBO处理相机纹理" class="headerlink" title="3. 使用FBO处理相机纹理"></a>3. 使用FBO处理相机纹理</h4><h5 id="3-1获取相机纹理后，最后返回步骤1中生成的mFrameBufferTextures-0-，即可对相机纹理进行多个滤镜或者变换处理"><a href="#3-1获取相机纹理后，最后返回步骤1中生成的mFrameBufferTextures-0-，即可对相机纹理进行多个滤镜或者变换处理" class="headerlink" title="3.1获取相机纹理后，最后返回步骤1中生成的mFrameBufferTextures[0]，即可对相机纹理进行多个滤镜或者变换处理"></a>3.1获取相机纹理后，最后返回步骤1中生成的mFrameBufferTextures[0]，即可对相机纹理进行多个滤镜或者变换处理</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GlUtil</span>.</span></span>check<span class="hljs-constructor">GlError(TAG, <span class="hljs-string">&quot;[onDrawFrame()][Start]&quot;</span>)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">Viewport(<span class="hljs-params">left_margin</span>, 0, <span class="hljs-params">mOutputWidth</span>, <span class="hljs-params">mOutputHeight</span>)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindFramebuffer(GLES20.GL_FRAMEBUFFER, <span class="hljs-params">mFrameBuffers</span>[0])</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">UseProgram(<span class="hljs-params">mGLProgramId</span>)</span>;<br><br>mGLVertexBuffer.position(<span class="hljs-number">0</span>);<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">VertexAttribPointer(<span class="hljs-params">vPosition</span>, 2, GLES20.GL_FLOAT, <span class="hljs-params">false</span>, 0, <span class="hljs-params">mGLVertexBuffer</span>)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">EnableVertexAttribArray(<span class="hljs-params">vPosition</span>)</span>;<br>mGLTextureBuffer.position(<span class="hljs-number">0</span>);<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">VertexAttribPointer(<span class="hljs-params">vCoord</span>, 2, GLES20.GL_FLOAT, <span class="hljs-params">false</span>, 0, <span class="hljs-params">mGLTextureBuffer</span>)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">EnableVertexAttribArray(<span class="hljs-params">vCoord</span>)</span>;<br><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">UniformMatrix4fv(<span class="hljs-params">vMatrix</span>, 1, <span class="hljs-params">false</span>, <span class="hljs-params">matrix</span>, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">ActiveTexture(GLES20.GL_TEXTURE0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, <span class="hljs-params">textureId</span>)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">Uniform1i(<span class="hljs-params">vTexture</span>, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">BindFramebuffer(GLES20.GL_FRAMEBUFFER, 0)</span>;<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GlUtil</span>.</span></span>check<span class="hljs-constructor">GlError(TAG, <span class="hljs-string">&quot;[onDrawFrame()][Start]&quot;</span>)</span>;<br>return mFrameBufferTextures<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>;<span class="hljs-comment">//返回创建好的纹理对象-----&gt;进行后续的操作</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="4-释放"><a href="#4-释放" class="headerlink" title="4.释放"></a>4.释放</h4><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"> <span class="hljs-keyword">private</span> void delete<span class="hljs-constructor">Envi()</span> &#123;<br>     <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DeleteTextures(2, <span class="hljs-params">fTexture</span>, 0)</span>;<br>     <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DeleteRenderbuffers(1, <span class="hljs-params">fRender</span>, 0)</span>;<br>     <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DeleteFramebuffers(1, <span class="hljs-params">fFrame</span>, 0)</span>;<br> &#125;<br><br><br><span class="hljs-keyword">private</span> void destroy<span class="hljs-constructor">FrameBuffers()</span> &#123;<br>     <span class="hljs-keyword">if</span> (mFrameBufferTextures != null) &#123;<br>         <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DeleteTextures(1, <span class="hljs-params">mFrameBufferTextures</span>, 0)</span>;<br>         mFrameBufferTextures = null;<br>     &#125;<br><br>     <span class="hljs-keyword">if</span> (mFrameBuffers != null) &#123;<br>         <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GLES20</span>.</span></span>gl<span class="hljs-constructor">DeleteFramebuffers(1, <span class="hljs-params">mFrameBuffers</span>, 0)</span>;<br>         mFrameBuffers = null;<br>     &#125;<br> &#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/MrYeLiang/Android-OpenGL-Filter">MrYeLiang Android-OpenGL-Filter 相机纹理3次FBO纹理变化</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/doggycoder/AndroidOpenGLDemo">湖广午王 AndroidOpenGLDemo FBO 图片灰度滤镜</a> </li>
+</ol>
+<h4 id="6-Camera2-GLSurfaceView-FBO"><a href="#6-Camera2-GLSurfaceView-FBO" class="headerlink" title="6.Camera2+GLSurfaceView+FBO"></a>6.Camera2+GLSurfaceView+FBO</h4>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/OpenGLES-Android-Shader/">OpenGLES Android Shader</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGLES/">OpenGLES</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/07/OpenCV/FaceDetector/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OpenCV FaceDetector 人脸检测</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/07/Android/Camera2/Camera2_GlSurfaceView/">
+                        <span class="hidden-mobile">Camera2+GlSurfaceView</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
