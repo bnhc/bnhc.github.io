@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-21T10:23:07.448Z</updated>
+  <updated>2022-01-21T10:29:11.654Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2022/01/21/AI/TrainCustomeObjectDetect/"/>
     <id>http://example.com/2022/01/21/AI/TrainCustomeObjectDetect/</id>
     <published>2022-01-21T09:28:22.000Z</published>
-    <updated>2022-01-21T10:23:07.448Z</updated>
+    <updated>2022-01-21T10:29:11.654Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="ObjectDetect"><a href="#ObjectDetect" class="headerlink" title="ObjectDetect"></a>ObjectDetect</h3><pre><code>参照![官方](https://developers.google.com/codelabs/tflite-object-detection-android#0)实现</code></pre><h3 id="关键注意点"><a href="#关键注意点" class="headerlink" title="关键注意点"></a>关键注意点</h3><pre><code>1. TFLite Moder Maker训练图像自定义对象检测模型2. 使用TFLite Task Library 在Android端部署使用 3. 如何将SaveModel转换成为tflite模型</code></pre><h3 id="自定义数据集"><a href="#自定义数据集" class="headerlink" title="自定义数据集"></a>自定义数据集</h3><pre><code>1. [Google Cloud](https://cloud.google.com/vision/automl/object-detection/docs/edge-quickstart#preparing_a_dataset)需要自己准备数据，https://cloud.google.com/storage2. 等我卡准备好后，自测一波口罩数据数据集，自定义ObjectDetector(二维码检测，口罩等)</code></pre><h3 id="现有状态"><a href="#现有状态" class="headerlink" title="现有状态"></a>现有状态</h3><pre><code>1. 我使用官方例子，“Train a salad detector with TFLite Model Maker&quot;，跑完了整个流程，此处对应google TensorflowB站中的魏巍讲解的视频对应</code></pre><p><img src="./AI_ObjectDetector.png" alt="自定义训练后截图">    </p>]]></content>
+    <content type="html"><![CDATA[<h3 id="ObjectDetect"><a href="#ObjectDetect" class="headerlink" title="ObjectDetect"></a>ObjectDetect</h3><pre><code>参照![官方](https://developers.google.com/codelabs/tflite-object-detection-android#0)实现</code></pre><h3 id="关键注意点"><a href="#关键注意点" class="headerlink" title="关键注意点"></a>关键注意点</h3><pre><code>1. TFLite Moder Maker训练图像自定义对象检测模型2. 使用TFLite Task Library 在Android端部署使用 3. 如何将SaveModel转换成为tflite模型</code></pre><h3 id="自定义数据集"><a href="#自定义数据集" class="headerlink" title="自定义数据集"></a>自定义数据集</h3><pre><code>1. [Google Cloud](https://cloud.google.com/vision/automl/object-detection/docs/edge-quickstart#preparing_a_dataset)需要自己准备数据，https://cloud.google.com/storage2. 等我卡准备好后，自测一波口罩数据数据集，自定义ObjectDetector(二维码检测，口罩等)</code></pre><h3 id="现有状态"><a href="#现有状态" class="headerlink" title="现有状态"></a>现有状态</h3><pre><code>1. 我使用官方例子，“Train a salad detector with TFLite Model Maker&quot;，跑完了整个流程，此处对应google TensorflowB站中的魏巍讲解的视频对应</code></pre><p><img src="./AI_ObjectDetector.png" alt="自定义训练后截图">    </p><pre><code>2. 导入model.tflite可以看到AndroidStudio对文件的关键信息展示</code></pre><p><img src="./AI_AndroidStudio.PNG" alt="Android Studio">    </p>]]></content>
     
     
       
