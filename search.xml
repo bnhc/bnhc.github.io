@@ -4,6 +4,70 @@
   
     
     <entry>
+      <title>Feeds The Camera Preview To View</title>
+      <link href="2022/04/01/Android/MediaCodec/LiveCamera/"/>
+      <url>2022/04/01/Android/MediaCodec/LiveCamera/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Decodes Two Video</title>
+      <link href="2022/04/01/Android/MediaCodec/DoubleDecode/"/>
+      <url>2022/04/01/Android/MediaCodec/DoubleDecode/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Records Camera,SaveFile</title>
+      <link href="2022/04/01/Android/MediaCodec/ContinuousCapture/"/>
+      <url>2022/04/01/Android/MediaCodec/ContinuousCapture/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>TextureView播放60FPS视频(Grafika)</title>
+      <link href="2022/04/01/Android/MediaCodec/TextureView+MeidaCodec+60FPS/"/>
+      <url>2022/04/01/Android/MediaCodec/TextureView+MeidaCodec+60FPS/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Grafika"><a href="#Grafika" class="headerlink" title="Grafika"></a>Grafika</h2><pre><code>1. Android Grafika(kelafika) Example,Using TextureView Componment Play Video</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> MediaCodec Grafika </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TextureView </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>FFmpeg</title>
       <link href="2022/02/21/Android/MediaCodec/FFmpeg/"/>
       <url>2022/02/21/Android/MediaCodec/FFmpeg/</url>
